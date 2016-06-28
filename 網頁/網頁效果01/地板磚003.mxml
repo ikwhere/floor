@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" width="1024" height="768" layout="absolute">
+	<mx:Image id="圖層 0" source="圖層 0.gif" x="0" y="0" width="1024" height="768"/>
+	<mx:Image id="圖層 2" source="圖層 2.gif" x="32" y="38" width="952" height="697"/>
+	<mx:Image id="圖層 4" source="圖層 4.gif" x="66" y="78" width="625" height="607"/>
+	<mx:Image id="走廊" source="走廊.gif" x="74" y="78" width="152" height="50"/>
+	<mx:Image id="客廳" source="客廳.gif" x="226" y="78" width="152" height="50"/>
+	<mx:Image id="臥室" source="臥室.gif" x="378" y="78" width="152" height="50"/>
+	<mx:Image id="衛生間" source="衛生間.gif" x="530" y="78" width="152" height="50"/>
+	<mx:Image id="規格說明" source="規格說明.gif" x="65" y="610" width="618" height="68"/>
+	<mx:Image id="郵件" source="郵件.gif" x="545" y="693" width="46" height="38"/>
+	<mx:Image id="相框左" source="相框左.gif" x="690" y="78" width="39" height="733"/>
+	<mx:Image id="相框中" source="相框中.gif" x="721" y="78" width="210" height="606"/>
+	<mx:Image id="相框右" source="相框右.gif" x="923" y="83" width="50" height="601"/>
+	<mx:Image id="電話" source="電話.gif" x="330" y="691" width="38" height="39"/>
+	<mx:Image id="地址" source="地址.gif" x="773" y="689" width="37" height="44"/>
+	<mx:Image id="上箭頭" source="上箭頭.gif" x="800" y="89" width="63" height="63"/>
+	<mx:Image id="下箭頭" source="下箭頭.gif" x="806" y="580" width="63" height="63"/>
+	<mx:Image id="聯繫人" source="聯繫人.gif" x="91" y="688" width="41" height="44"/>
+</mx:Application>

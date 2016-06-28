@@ -1,0 +1,101 @@
+<%@LANGUAGE="VBSCRIPT" CODEPAGE="936"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<!--#include file="dbconn.asp"-->
+<script>
+function change_flag( objectstr ){
+	var img = document.getElementById("Layer1");
+    img.style.backgroundImage="url(../Flags/"+objectstr+")"
+	}
+</script>
+<script>
+function tabbk_lload(){
+	var img = document.getElementById("Layer1");
+    img.style.backgroundImage="url(../pic/background.jpg)"
+	}
+</script>
+<%
+	set rs=server.CreateObject("adodb.Recordset")
+	strsql="select * from picpath"
+	rs.open strsql,db,1
+	If Not rs.bof and Not rs.Eof Then
+	    DIM page_no
+		IF request.QueryString("page_no")="" THEN
+		     page_no=1
+	    ELSE
+		     page_no=Cint(request.QueryString("page_no"))
+		END IF
+		
+		rs.pagesize=7
+		rs.absolutepage=page_no
+		DIM I
+		I=rs.pagesize
+%>
+<style type="text/css">
+<!--
+.STYLE2 {
+	font-size: 24px;
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+
+<body onLoad="tabbk_lload()">
+
+<table width="534" height="339" border="1">
+  <caption>
+  <span class="STYLE2">地板预览界面</span> 
+  </caption>
+  <tr> 
+    <td height="37"> <div align="center">效果图</div>
+      <div align="center"></div></td>
+  </tr>
+  <tr> 
+    <td> <div id="Layer1" class=".pic0"> 
+        <div align="center"><img src="../front.gif" name="BIGPIC" width="534" height="339" id="BIGPIC"/></div>
+      </div></td>
+  </tr>
+  <tr> 
+    <td height="1"> <div align="center"> 
+        <%
+			DO WHILE NOT rs.eof  AND I>0
+		        I=I-1
+   %>
+      <a href="#" onClick="change_flag('<%=rs("picpath")%>')"> <img src="../Flags/<%=rs("picpath")%>" width="50" height="33" /></a>&nbsp; 
+       <%
+	         rs.movenext
+		   LOOP
+	%>
+      </div>
+</td>
+  </tr>
+  <tr>
+    <td height="19"> <div align="left">请选择数据页:
+	<% 
+	   FOR I=1 TO rs.pagecount 
+	             IF I=page_no THEN
+				      response.Write I & "&nbsp;"
+	             ELSE
+				      response.Write "<a href='main.asp?page_no="&I&"'>"&I&"</a>&nbsp;"
+			     END IF
+		NEXT
+	END IF
+	J=page_no+1
+	K=page_no-1
+	IF page_no>1 THEN %>
+	&nbsp;&nbsp;&nbsp;<a href='main.asp?page_no=<%=K%>'>上一页</a>
+	<%
+	END IF
+	IF page_no<rs.pagecount THEN 
+	%>
+	&nbsp;<a href='main.asp?page_no=<%=J%>'>下一页</a></div></td>
+	<%END IF%>
+  </tr>
+</table>
+</body>
+</html>
+
